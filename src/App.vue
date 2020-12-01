@@ -3,11 +3,24 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+      <p @click="$store.commit('add')">{{counter.state}}</p>
     </div>
     <router-view />
   </div>
 </template>
+<script lang="ts">
+import { Component, Provide, Vue } from 'vue-property-decorator'
 
+@Component
+export default class App extends Vue {
+  get counter(): any {
+    return this.$store
+  }
+  created() {
+    console.log(this)
+  }
+}
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
